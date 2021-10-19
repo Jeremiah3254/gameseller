@@ -52,8 +52,8 @@ function Store() {
     }*/
 
     const AddItemToCart = (id) => {
+        
         if ((CurrentItems[id-1] != undefined) && (CurrentItems[id-1].id != items[id-1].id) && (items[id-1].inventory > 0)) {
-            console.log("test1")
             if (items[id-1].id < CurrentItems[id-1].id) {
             const newItem = {
                 id: CurrentItems[id-1].id,
@@ -86,7 +86,6 @@ function Store() {
         } else {
             for (let q =0; q<=CurrentItems.length; q++) {
                 if ((CurrentItems[q] != undefined) && (items[id-1].name == CurrentItems[q].name) && (items[id-1].inventory > 0)) {
-                    console.log("test2")
                     CurrentItems[q].Quantity = CurrentItems[q].Quantity+1;
                     items[id-1].inventory = items[id-1].inventory-1;
                     if (items[id-1].inventory <= 0) {
@@ -97,7 +96,6 @@ function Store() {
                     setCurrentItems([...CurrentItems])
                     break
                 }else if (q == CurrentItems.length) {
-                    console.log("test3")
                     if (items[id-1].inventory <= 0) {
                     } else {
                         const newItem = {
@@ -118,9 +116,9 @@ function Store() {
             }
         }
         TotalValue[0].TotalValue = 0
-        for (let i = 0; i<=CurrentItems.length; i++) {
-            if ((CurrentItems[i] != undefined)) {
-            TotalValue[0].TotalValue = TotalValue[0].TotalValue + (CurrentItems[i].price*CurrentItems[i].Quantity)
+        for (let v = 0; v<CurrentItems.length; v++) {
+            if ((CurrentItems[v] != undefined)) {
+            TotalValue[0].TotalValue = TotalValue[0].TotalValue + (CurrentItems[v].price*CurrentItems[v].Quantity)
             }
         }
         SetTotal([...TotalValue])
